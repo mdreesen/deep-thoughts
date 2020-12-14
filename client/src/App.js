@@ -12,8 +12,12 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 
 // need to have absolute path to get GraphQL
+// URI stands for "Uniform Resource Identifier"
+// changed "http://localhost/graphql" to "/graphql". Need to change this in package.json
+//  "proxy": "http://localhost:3001", needs to be added to package.json
+// This should now work in development and production envs
 const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql'
+  uri: '/graphql'
 });
 
 // wrapped everything in the ApolloProvider
