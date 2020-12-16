@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_THOUGHTS } from '../utils/queries';
 
 // importing ThoughtList component
-import ThoughtList from '../components/Thoughtlist';
+import ThoughtList from '../components/ThoughtList';
 
 const Home = () => {
 

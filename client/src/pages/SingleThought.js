@@ -1,4 +1,8 @@
 import React from 'react';
+
+// import reactionList
+import ReactionList from '../components/ReactionList';
+
 // importing useParams to get the SingleThought _id
 import { useParams } from 'react-router-dom';
 
@@ -38,6 +42,8 @@ const SingleThought = props => {
           <p>{thought.thoughtText}</p>
         </div>
       </div>
+
+      {thought.reactionCount > 0 && <ReactionList reactions={thought.reactions} />}
     </div>
   );
 };
