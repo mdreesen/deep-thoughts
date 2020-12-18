@@ -1,9 +1,3 @@
-// import the gql tagged template function
-// create our typeDefs
-// the "!" means that the data MUST exist in order for that query to be carried out
-// This has two mutations -> logging in and add a user, both wil return a user object
-// addReaction() will return the parent Thought instead fo the newly created "Reaction". This is because the front end will ultimately track changes - 
-// on the thought level, not the reaction level
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`

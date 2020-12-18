@@ -1,30 +1,20 @@
 import React from 'react';
-
-// import reactionList
-import ReactionList from '../components/ReactionList';
-
-// importing useParams to get the SingleThought _id
 import { useParams } from 'react-router-dom';
 
-// importing the useQuery hook
+import ReactionList from '../components/ReactionList';
+
 import { useQuery } from '@apollo/react-hooks';
-// importing the QUERY_THOUGHT from utils/queries.js
 import { QUERY_THOUGHT } from '../utils/queries';
 
 const SingleThought = props => {
-  // "loading" and "data" are destructured from the "useQuery" hook.
-  // Loading variable is then used to briefly show a loading <div>Loading...</div> element
-  // "data" variable is used to populate a thought object
-  // useQuery hook was given a second argument in the form of an object, this is how you can pass variables to queries that need them
-  // The "id" property on the variables object will become the "$id" parameter in the graphQL query
   const { id: thoughtId } = useParams();
 
   const { loading, data } = useQuery(QUERY_THOUGHT, {
     variables: { id: thoughtId }
   });
-  
+
   const thought = data?.thought || {};
-  
+
   if (loading) {
     return <div>Loading...</div>;
   }

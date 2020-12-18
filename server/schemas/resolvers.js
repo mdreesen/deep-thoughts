@@ -1,17 +1,6 @@
-const { User, Thought } = require('../models');
-// for authentication errors - "AutheticationError"
 const { AuthenticationError } = require('apollo-server-express');
+const { User, Thought } = require('../models');
 const { signToken } = require('../utils/auth');
-
-
-// "parent" will not be used, but we need something in that first spot to access the "username" argument
-// we use a ternary operator to check if "username" exists, if it does, we set params to an object with a username key set to that value
-// if it does not, then we return an empty object
-// destructure the _id argument value and place it into our ".findOne()" method to look up a single thought by its "_id"
-// only logged-in users shou dbe able to use this mutation, hence why we check to the existence of "context.user" first.
-// remember, the decoded JWT is only added to context if the verification passes. 
-// The token insludes the user's username, email, and _id properties, which become properties of "context.user" and can be used in the follow-up
-// "Thought.create()" and "uUser.findByIdAndUpdate()" methods
 
 const resolvers = {
   Query: {
