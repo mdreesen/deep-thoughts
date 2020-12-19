@@ -29,15 +29,14 @@ app.use(express.json());
 // Serve up static assets (this serves the React application)
 // checkong to see if the Node environment is in production. If it is, we instruct the "Express.js" server to serve any files in the React applications "build" folder yet
 // because remember, that for production only
+// Serve up static assets
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build/index.html')));
-
-  // created a wildcard "get" route for the server. In other workds, if we make a GET request to any location on the server
-  // that doesn't have an explicit route defined, respond with the production-ready React front-end code.
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build/index.htmlx'));
-  });
+  app.use(express.static(path.join(__dirname, '../client/build')));
 }
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 db.once('open', () => {
   app.listen(PORT, () => {
